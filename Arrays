@@ -1,0 +1,143 @@
+//Introductions 
+//An array is a collection of similar data elements stored at contiguous memory locations. 
+//It is the simplest data structure where each data element can be accessed directly by only using its index number.
+// sytax int arr[];
+
+//Q1: Write a program to reverse an array or string
+    //Approches: 
+      //App1: 1) Initialize start and end indexes as start = 0, end = n-1   2) In a loop, swap arr[start] with arr[end] and change start and end as follows :  start = start +1, end = end – 1
+          //solutions : 
+          #include <iostream>
+          using namespace std;
+          int main() {
+              // Write C++ code here
+                  int arr[] = {1, 2, 3, 4, 5, 6};
+                  for(int i=0;i<(6/2)+1;i++){
+                      int temp=arr[i];
+                      arr[i]=arr[5-i];
+                      arr[5-i]=temp;
+                  }
+                   for (int i = 0; i < 6; i++)
+                   cout << arr[i] << " ";
+
+              return 0;
+          }
+          
+          
+ //Q2: Maximum and minimum of an array using minimum number of comparisons
+     //Approches:
+        //App1: By using the divide and conquern technique 
+          // sloutions 
+              #include<iostream>
+              using namespace std;
+              struct Pair
+              {
+                int min;
+                int max;
+              };
+
+              Pair getMinMax(int arr[], int n)
+              {
+                struct Pair minmax;	
+                int i;
+                if (n == 1)
+                {
+                  minmax.max = arr[0];
+                  minmax.min = arr[0];	
+                  return minmax;
+                }
+                if (arr[0] > arr[1])
+                {
+                  minmax.max = arr[0];
+                  minmax.min = arr[1];
+                }
+                else
+                {
+                  minmax.max = arr[1];
+                  minmax.min = arr[0];
+                }
+                for(i = 2; i < n; i++)
+                {
+                  if (arr[i] > minmax.max)	
+                    minmax.max = arr[i];
+
+                  else if (arr[i] < minmax.min)	
+                    minmax.min = arr[i];
+                }
+                return minmax;
+              }
+              int main()
+              {
+                int arr[] = { 1000, 11, 445,1, 330, 3000 };
+                struct Pair minmax = getMinMax(arr, 6);
+                cout << "Minimum element is "<< minmax.min << endl;
+                cout << "Maximum element is "<< minmax.max;	
+                return 0;
+              }
+
+
+//Q3: Sort an array of 0s, 1s and 2s
+   //Approches:
+      // App1: just we havw to count the number of zero's , one's and two's and than just to update it by given counts of the numbers 
+         //sloutions
+              #include <iostream>
+              using namespace std;
+              int main() {
+                      int arr[] = {1, 0,2,2,1,1,0}; 
+                      int one=0,zero=0,two=0;
+                      for(int i=0;i<7;i++){
+                          if(arr[i]==0){
+                              zero++;
+                          }
+                         if(arr[i]== 1){
+                             one++;
+                         }
+                         if(arr[i]==2){
+                             two++;
+                         }
+                      }
+                       for (int i = 0; i < zero; i++){
+                           arr[i]=0;
+                       }
+                        for (int i = zero; i <(zero+one) ; i++){
+                            arr[i]=1;
+                        }
+                       for (int i = (zero+one); i < 7; i++)
+                          arr[i]=2;
+                       for (int i = 0; i < 7; i++)
+                       cout << arr[i] << " ";
+
+                  return 0;
+              }
+
+
+//Q4.  Contains Duplicate
+   //Approches: 
+      //App1: In this first approche is that if you just sort the array and comapiar the ajdcent elements in the arrays if the adjcent elements are same than return true otherwise fasle;
+      // App2: Using unordered mapping is also useful for the sluotions of this problem
+      //App3: By using the sets in this approche if the size of the set is same as the size of the arrays than return false otherwise true; for example 
+         //Sloutions
+           // Online C++ compiler to run C++ program online
+                #include <bits/stdc++.h>
+                using namespace std;
+                int  main() {
+                    // Write C++ code here
+                        vector<int> nums = {1, 0,2,2,1,1,0}; 
+                          unordered_set<int> s;
+                        for(int i = 0; i < nums.size(); i++)
+                            s.insert(nums[i]);
+                        if(s.size() != nums.size())
+                            cout<<true;
+                        else
+                            cout<< false;
+                    return 0;
+                }
+
+
+//Q5. Move all negative numbers to beginning and positive to end with constant extra space
+    //Approches
+      //App1: Just to sort it by merge, quick, heap, radix methods 
+      //App2: or to let the two arrays one for the negative and other for the positive store the numbers as acccording than merge them because the order of the elements is not matters in this.
+
+
+
