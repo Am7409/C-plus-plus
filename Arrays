@@ -140,4 +140,65 @@
       //App2: or to let the two arrays one for the negative and other for the positive store the numbers as acccording than merge them because the order of the elements is not matters in this.
 
 
+//Q6. Union of two arrays
+    //Approches: 
+       //App1: Just inseert all the elements into the sets 
+          //Sloutions 
+            #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                 int a[]={1, 2, 3, 4, 5};
+                 int b[]={1,2,3};
+                 set<int> s;
+                 for(int i=0;i<5;i++){
+                     s.insert(a[i]);
+                 }
+                 for(int j=0;j<3;j++){
+                     s.insert(b[j]);
+                 }
+                  for(auto str:s){
+                     cout<<str<<" ";
+                 }
+                 cout<<endl;
+                 cout<<s.size()<<endl;
+                return 0; }
+
+
+//Q7. Cyclically rotate an array by one from the back side 
+   //Approches 
+      //App1. Copy the last element into the temp and than copy the rest elements into the other array and than insert the temp array into the new array
+          //Solutions
+                #include <bits/stdc++.h>
+                using namespace std;
+                int main() {
+                     int a[]={1, 2, 3, 4, 5};
+                     int temp=a[4];
+                     int b[5];
+                     b[0]=temp; 
+                     int k=0;
+                     for(int i=1;i<5;i++){
+                         b[i]=a[k++];
+                     }
+                     for(int i=0;i<5;i++){
+                         cout<<b[i]<<" ";
+                     }
+                    return 0;
+                }
+        //App2. By using the simple loop in the reverse order to print the right answer
+           //Solutions
+                 #include <bits/stdc++.h>
+                using namespace std;
+                int main() {
+                     int a[]={1, 2, 3, 4, 5};
+                     for(int i=5-1;i>0;i--){
+                         swap(a[i],a[i-1]);
+                     }
+                     for(int i=0;i<5;i++){
+                         cout<<a[i]<<" ";
+                     }
+                    return 0;
+                }
+
+
+//Q8: 
 
