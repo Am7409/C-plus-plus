@@ -200,5 +200,30 @@
                 }
 
 
-//Q8: 
+//Q8:Find the maximum sum of the sumarrays in the given array (Kadane's Algorithm)
+    //Approches 
+        //App1: In this we to find out the max sum of sub array by using this we have to triverse it and check that the maxsum is graeter than the currentsum only. 
+            //Solutions 
+            #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                 int a[]={-4,6,-3,4,-1};
+                 int sum=0;
+                 int maxsum=INT_MIN;
+                 for(int i=0;i<5;i++){
+                     sum=max(sum+a[i],a[i]);
+                     maxsum=max(sum,maxsum);
+                 }
+                cout<<maxsum<<endl;
+                return 0;
+            }
 
+
+//Q9. Minimum number of jumps    (Given an array of N integers arr[] where each element represents the max length of the jump that can be made forward from that element. 
+                                  Find the minimum number of jumps to reach the end of the array (starting from the first element). If an element is 0, then you cannot
+                                  move through that element.)
+     //Approches 
+        //App 1: 
+             //Solutions
+              
+               
