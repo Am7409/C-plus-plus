@@ -353,6 +353,81 @@
             }
             
             
-//Q14:          
+//Q14: Rearrange array in alternating positive & negative items with O(1) extra space
+    //Approches 
+      //App1:The brute force approach is to divide the all the positive nuber and negative in the differnt arrays and than merge accoeding to the ith place i.e. at the 
+             odd palce psotive and at odd place the negative number.
+        //Sloutions 
+      //App2: In this approach we have to use two pointer in which first is start from the -1 and other one is from the "n" in the left side we have to store the positive 
+              number and the right side the negative numbers using the while loop. 
+              After this we have to take the new variable which starts from the "0" and than apply the while loop in this we have to swap the ith value to the kth value becuzz
+                the ith is at the first negative number and the kth is at the largest positive number and increase the i with one and k by 2.
+        //Solutions:
+            #include <bits/stdc++.h>
+            using namespace std;
+            void rearrange(int a[],int n){
+                int i=0; int j=n;
+                while(i<j){
+                    while(i<=n-1 and a[i]>0)
+                        i++;
+                    while(j>=0 and a[j]<0)
+                        j--;
+                        if(i<j)
+                        swap(a[i],a[j]);
+                }
+                if(i==0 or i==n-1)
+                  return;
+               int k=0;
+               while(k<n and i<n){
+                   swap(a[k],a[i]);
+                   i++;
+                   k=k+2;
+               }
+
+            }
+            void print(int a[],int n){
+                for(int i=0;i<n;i++){
+                    cout<<a[i]<<" ";
+                }
+            }
+            int main() {
+                // Write C++ code here
+                int a[]={1, 2, 3, -4, -1, 4};
+                int n=6;
+                print(a,n);
+                rearrange(a,n);
+                cout<<endl;
+                 print(a,n);
+                return 0;
+            }
               
               
+//Q15: Subarray with 0 sum
+    //Approches
+      //App1: This is the burt force method by using the two loops for the finding the array
+         //Solutions
+         #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                // Write C++ code here
+                int a[]={4, 2, -3, 1, 6};
+                int n=5;
+                int sum=0;
+                for(int i=0;i<n;i++){
+                   int sum=0;
+                   for(int j=i;j<n;j++){
+                       sum+=a[j];
+                       if(sum==0){
+                           cout<<"YES"<<endl;
+                           break;
+                       }
+                   }
+                }
+                return 0;
+            }
+            
+            
+//Q16:             
+            
+            
+            
