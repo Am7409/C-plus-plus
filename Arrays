@@ -560,12 +560,32 @@ Q18: Longest consecutive subsequence
        
 Q20: Maximum profit by buying and selling a share at most twice
    //Approches 
-     //App1:
+     //App1:  Initialize four variables for taking care of the first buy, first sell, second buy, second sell. Set first buy and second buy as INT_MIN and first and 
+              second sell as 0. This is to ensure to get profit from transactions. Iterate through the array and return the second sell as it will store maximum profit.
+               we find the first transcations and than the second one.
        //Solutions 
-         
+         #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                 int a[]={ 2, 30, 15, 10, 8, 25, 80 };
+                 int n=7;
+                int  first_buy=INT_MIN,first_sell=0,second_buy=INT_MIN,second_sell=0;
+                 for(int i=0;i<n;i++){
+                     first_buy=max(first_buy,-a[i]);//we set prices to negative, so the calculation of profit will be convenient
+                     first_sell=max(first_sell,first_buy+a[i]);
+                     second_buy=max(second_buy,first_sell-a[i]);//we can buy the second only after first is sold
+                     second_sell=max(second_sell,second_buy+a[i]);
+                 }
+                 cout<<second_sell;
+                return 0;
+            }
        
         
-        
+//Q21: Array Subset of another array
+     //Approches: 
+       //App1: we can use the two sets and than the major set we have to find the elements from the major to the minor one. 
+         //Solutions
+           
         
         
         
