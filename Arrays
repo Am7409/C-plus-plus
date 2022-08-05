@@ -483,13 +483,87 @@
 
 Q18: Longest consecutive subsequence
    //Aproches 
-     //App1: 
+     //App1: By using the loop and check the condition of getting the differnce of 1. 
+       //Solutions 
+         #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                 int a[]={1,9,3,10,4,20,2};
+                 int n=7;int c=0;
+                 sort(a,a+n); int i=1;
+                 for(i=0;i<n-1;i++){
+                     if(a[i+1]-a[i]==1){
+                         c++;
+                     }
+                 }
+                 cout<<c;
+                return 0;
+            }
+    //App2: In this first we insert the array elements in the set and apply the loop and check the condition to find if its previous element is present in the set or not 
+            and if present if than the current element is not the starting element of the sequence.
+            Now check the condition that for that whose previous element is present in the set, so it may the first element of the sequence and find the sequence of that starting
+            element and find the maximum lenght of the array.
+      //Solutions:
+      #include <bits/stdc++.h>
+        using namespace std;
+        int main() {
+             int a[]={1,9,3,10,4,20,2};
+             int n=7;int c=0;
+             set<int> s;
+             for(int i=0;i<n;i++){
+                 s.insert(a[i]);
+             }
+             for(int i=0;i<n;i++){
+                 if(s.find(a[i]-1)!=s.end()){
+                     continue;
+                 }
+                 else{
+                     int count=0;
+                     int current=a[i];
+                     while(s.find(current)!=s.end()){
+                         count++;
+                         current++;
+                     }
+                     c=max(c,count);
+                 }
+             }
+             cout<<c;
+            return 0;
+        }
+    
+    
+//Q19: Given an array of size n and a number k, find all elements that appear more than n/k times
+   //Approches 
+     //App1: By using the map approche we just have to find the map second to comapre with n/k;
+       //Solutions 
+          #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                 int a[]= {3, 1, 2, 2, 1, 2, 3, 3};
+                 int n=8;
+                 int k=4;
+                 map<int,int> m;
+                 for(int i=0;i<n;i++){
+                     m[a[i]]++;
+                 }
+                 int c=n/k;
+                 for(auto it:m){
+                     if(it.second > c)
+                     cout<<it.first<<" ";
+                 }
+                return 0;
+            }
+     //App2: 
+       //Solutions 
+       
+       
+       
+Q20: Maximum profit by buying and selling a share at most twice
+   //Approches 
+     //App1:
        //Solutions 
          
-        
-        
-        
-        
+       
         
         
         
