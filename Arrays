@@ -427,7 +427,83 @@
             }
             
             
-//Q16:             
+//Q16: Factorials of large numbers and return the answer in the vectore 
+     //Approches
+        //App1: In this we have to first find the factorial and insert the  answer into the vector for the larger value 
+           //Sloutions 
+           #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                 int  n=20;
+                long long int fact=1;
+                vector<int> v;
+                for(int i=1;i<=n;i++){
+                    fact=fact*i;
+                }
+                int mes=1;
+                while(fact!=0){
+                    v.push_back(fact%10);
+                    fact/=10;
+                }
+                reverse(v.begin(),v.end());
+                for(int i=0;i<v.size();i++){
+                    cout<<v[i];
+                }
+                return 0;
+            }
             
             
-            
+//Q17: Maximum Product Subarray 
+    //Approches 
+       //App1: In this we have to use the kadan's algorithim to find the subarray which have the maximum product in O(n) time.
+         //Sloutions
+          #include <bits/stdc++.h>
+            using namespace std;
+            int main() {
+                 int a[]={2, 0, 4, 5, -1, 0};
+                 int n=6;
+                 long long mul=INT_MIN,ans=1;
+                 for(int i=0;i<n;i++ ){
+                     mul=(mul*a[i]);
+                     ans=max(mul,ans);
+                     if(mul==0)
+                        mul=1;
+                 }
+                 mul=1;
+                 for(int i=n-1;i>=0;i-- ){
+                     mul=(mul*a[i]);
+                     ans=max(mul,ans);
+                     if(mul==0)
+                        mul=1;
+                 }
+                 cout<<ans;
+                return 0;
+            }
+
+
+Q18: Longest consecutive subsequence
+   //Aproches 
+     //App1: 
+       //Solutions 
+         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
