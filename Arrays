@@ -142,7 +142,8 @@
 
 //Q6. Union of two arrays
     //Approches: 
-       //App1: Just inseert all the elements into the sets 
+        //App1: By using the mapping method and just store the first value of mapp in the vector.
+       //App2: Just inseert all the elements into the sets 
           //Sloutions 
             #include <bits/stdc++.h>
             using namespace std;
@@ -173,7 +174,7 @@
                 int main() {
                      int a[]={1, 2, 3, 4, 5};
                      int temp=a[4];
-                     int b[5];
+                     int b[5];         //O(n)  space complixity
                      b[0]=temp; 
                      int k=0;
                      for(int i=1;i<5;i++){
@@ -184,14 +185,14 @@
                      }
                     return 0;
                 }
-        //App2. By using the simple loop in the reverse order to print the right answer
+        //App2. By using the simple loop in the reverse order to print the right answer by using the swapping. 
            //Solutions
                  #include <bits/stdc++.h>
                 using namespace std;
                 int main() {
                      int a[]={1, 2, 3, 4, 5};
                      for(int i=5-1;i>0;i--){
-                         swap(a[i],a[i-1]);
+                         swap(a[i],a[i-1]);      //O(1)      space complixity
                      }
                      for(int i=0;i<5;i++){
                          cout<<a[i]<<" ";
@@ -208,8 +209,8 @@
             using namespace std;
             int main() {
                  int a[]={-4,6,-3,4,-1};
-                 int sum=0;
-                 int maxsum=INT_MIN;
+                 int sum=0;    //current sum 
+                 int maxsum=INT_MIN;   // maximun sum when current sum is greater than the max sum 
                  for(int i=0;i<5;i++){
                      sum=max(sum+a[i],a[i]);
                      maxsum=max(sum,maxsum);
@@ -225,7 +226,7 @@
      //Approches 
         //App 1: For this we have to triverse the elements by using the three variables jumps,maxreach, steps : the algo is as follows
                 // Algorithim 
-                  jumps-=1
+                  jumps=1;
                   maxreach=a[0]
                   steps[0]
                   for i=1 to n-1
@@ -245,24 +246,24 @@
                                              if(n<=1){
                                                  cout<<0;
                                              }
-                                             if(a[0]==0){
+                                             if(a[0]==0){         
                                                  cout<<-1;
                                              }
                                              int steps=a[0];
                                              int maxsteps=a[0];
                                              int jumps=1;
                                              for(int i=1;i<n;i++){
-                                                 if(i==n-1){
+                                                 if(i==n-1){               // if the ith element is 0 then can't jump further
                                                     return jumps;
                                                  }
-                                                 maxsteps=max(maxsteps,i+a[i]);
+                                                 maxsteps=max(maxsteps,i+a[i]);        //find the maximum steps that we can can go in the given array
                                                     steps--;
                                                     if(steps==0){
-                                                        jumps++;
+                                                        jumps++;                //we can only jump if we walk enough steps of the given value 
                                                         if(i>=maxsteps){
                                                         return -1;
                                                     }
-                                                        steps=maxsteps-i;
+                                                        steps=maxsteps-i;         // formulafor finding the steps 
                                                     }
 
                                              }
