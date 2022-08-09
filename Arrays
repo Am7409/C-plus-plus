@@ -717,14 +717,99 @@ Q20: Maximum profit by buying and selling a share at most twice
             }
         
         
-//Q25: 
-    //Approches
-       //App1:
+//Q25: Sliding window approach 
+    //Approches 
+       //App1:In this method we have given a k which is the size of the window, first we have to sum all the elements of the array upto the size of the window 
+              and than find the minimum sum of that sum, and than make a loop to triverse from 1 to n and make condition of sum-a[i-1]+a[k+i-1] so that the window will 
+               slide
           //Solutions:
+            #include <bits/stdc++.h>
+            using namespace std;
+
+            int main()
+            {
+                int a[]={3,2,6,4,8,2};
+                int n=6,m=3; int sum=0;
+                int minmaa=INT_MAX;
+                for(int i=0;i<m;i++){
+                    sum+=a[i];
+                }
+                minmaa=min(minmaa,sum);
+                cout<<minmaa<<" ";
+                for(int i=1;i<=n-m;i++){
+                    cout<<(minmaa-a[i-1]+a[m+i-1])<<" ";
+                }
+                //cout<<sum;
+                return 0;
+            }
             
+            
+//Q26: Smallest subarray with sum greater than x            
+     //Approches
+       //App1: For this we have the sliding window algorithim and two pointer approach and than we have two variables both are started with 0 and than first start the 
+               end  variable to find the sum of the given varibles and than start the loop of the start varible to find the minimum length of the subarray.
+               And at the check the conditoin that the minlength of the subarray is equal to the m+1 if true than no sunarry  is present in the array and false than 
+               print the array.
+          //Solutions:
+            #include <bits/stdc++.h>
+            using namespace std;
+
+            int main()
+            {
+                int a[]={1, 4, 45, 6, 0, 19};
+                int n=6,x=51; int sum=0;
+                int start=0,end=0,minlen=n+1;
+                while(end<n){
+                    while(sum<=x and end<n){
+                        sum+=a[end++];
+                    }
+                    while(sum>x and start<n){
+                        if(end-start<minlen){
+                            minlen=end-start;
+                        }
+                        sum-=a[start++];
+                    }
+                }
+                if(minlen==n+1)
+                   cout<<"Not exist any subarray";
+                   else
+                    cout<<minlen;
+                return 0;
+            }
         
         
-        
-        
+//Q27: Three way partitioning  (Ducth Algorithim):- This algo is usefull for finding for the partioing of the array.
+   //Approches
+     //App1:
+       ??Solutions:
+         #include <bits/stdc++.h>
+            using namespace std;
+
+            void partions(int arr[],int n,int a,int b){
+                int s=0,i=0,e=n-1;
+                while(i<e){
+                    if(arr[i]<a){
+                        swap(arr[i++],arr[s++]);
+                    }
+                    else if(arr[i]>b){
+                        swap(arr[i],arr[e--]);
+                    }
+                    else
+                        i++;
+                }
+            }
+            int main()
+            {
+                int arr[]={1, 2,34,3,4};
+                int n=5; int a=1,b=2;
+                partions(arr,n,a,b);
+                for(int i=0;i<n;i++)
+                   cout<<arr[i]<<" ";
+
+                return 0;
+            }  
+            
+            
+//Q28:             
         
         
