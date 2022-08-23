@@ -150,5 +150,63 @@
           */
               
               
-//Q3:               
+//Q3: Find a common element in all rows of a given row-wise sorted matrix
+   //approches:
+      //App1:  Step1:  Create a Hash Table with all key as distinct elements 
+               of row1. Value for all these will be 0.
+                Step2:  
+                For i = 1 to M-1
+                 For j = 0 to N-1
+                  If (mat[i][j] is already present in Hash Table)
+                   If (And this is not a repetition in current row.
+                      This can be checked by comparing HashTable value with
+                      row number)
+                         Update the value of this key in HashTable with current 
+                         row number
+                Step3: Iterate over HashTable and print all those keys for 
+                       which value = M 
+        //Solutiuon: 
+          #include <bits/stdc++.h>
+          using namespace std;
+
+          // Specify number of rows and columns
+          #define M 4
+          #define N 5
+
+          // Returns common element in all rows of mat[M][N]. If there is no
+          // common element, then -1 is returned
+          int findCommon(int mat[M][N])
+          {
+              // A hash map to store count of elements
+              unordered_map<int, int> cnt;
+
+              int i, j;
+
+              for (i = 0; i < M; i++) {
+
+                  // Increment the count of first
+                  // element of the row
+                  cnt[mat[i][0]]++;
+
+                  // Starting from the second element
+                  // of the current row
+                  for (j = 1; j < N; j++) {
+
+                      // If current element is different from
+                      // the previous element i.e. it is appearing
+                      // for the first time in the current row
+                      if (mat[i][j] != mat[i][j - 1])
+                          cnt[mat[i][j]]++;
+                  }
+              }
+
+              // Find element having count equal to number of rows
+              for (auto ele : cnt) {
+                  if (ele.second == M)
+                      return ele.first;
+              }
+
+              // No such element found
+              return -1;
+          }
                 
