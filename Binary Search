@@ -21,4 +21,46 @@
         return -1;
     }
     
-//Q1:     
+//Q1: Find the sqaure of a number uisng the binary search with more pricision.
+    //Approches:
+      //App1: for this we have to use the loop and add the integer number with division of 10 in it and add that to the integer part and than just check the conditions.
+        //Solutions: 
+           #include <bits/stdc++.h>
+            using namespace std;
+
+             int sqareroot(int n){
+                 int s=0,e=n;
+                 int ans;
+                 while(s<=e){
+                     long long int mid=s+(e-s)/2;
+                     long long int sq=mid*mid;
+                     if(sq<=n){
+                         ans= mid;
+                         s=mid+1;
+                     }
+                     else{
+                         e=mid-1;
+                     }
+                 }
+                 return ans;
+             }
+             double pricesions(int n,int pre,int ans){
+                 double fact=1;
+                 double asn=ans;
+                 for(int i=0;i<pre;i++){
+                     fact/=10;
+                     for(double j=asn;j*j<n;j+=fact){
+                         asn=j;
+                     }
+                 }
+                 return asn;
+             }
+            int main() {
+                // Write C++ code here
+                int n=48;
+                  int temp=sqareroot(n);
+                  cout<<pricesions(n,4,temp);
+
+                return 0;
+            }
+          
