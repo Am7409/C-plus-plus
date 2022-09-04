@@ -64,3 +64,55 @@
                 return 0;
             }
           
+//Q2: Kth smallest number again 
+                              that you have to find kth number in sequence of number ranges
+                        a range are continuous ascending numbers like the range from a (5) to b (10)
+                        are the numbers: 5, 6, 7, 8, 9, 10     <- range
+                                                  a                 b     <- range limits a and b
+                        f.e.
+                        range1       range2       range3
+                        a     b        a     b        a    b
+                        10 - 20      40 - 50       70 - 80
+                           11             11             11       <- count of numbers in ranges
+                        finding the 12th number means the answer is number 40
+                        finding the 25th number means the answer is number 72
+                        finding the 34th number is not possible as there are only 33 numbers existing in total,
+                           so answer is -1
+   //Appriches
+      //App1: 
+        /Solutins 
+          // Online C++ compiler to run C++ program online
+            #include <bits/stdc++.h>
+            using namespace std;
+            void hashing(vector<int>& v,int a,int b){
+                for(int i=a;i<=b;i++){
+                    v.push_back(i);
+                }
+            }
+            int main() {
+                // Write C++ code here
+                int t;
+                cin>>t;
+                while(t--){
+                    int n,q;
+                    cin>>n>>q;
+                    vector<int> v;
+                    for(int i=0;i<n;i++){
+                        int a,b;
+                        cin>>a>>b;
+                        hashing(v,a,b);
+                    }
+                    int ans[q];
+                    for(int i=0;i<q;i++){
+                       cin>>ans[i];
+                    }
+                    for(int i=0;i<ans.size();i++){
+                    if(v.size()<=ans[i]){
+                        cout<<v[ans[i]-1]<<endl;
+                    }
+                    else{
+                        cout<<-1<<endl;
+                    }
+                    }
+                return 0;
+            }
