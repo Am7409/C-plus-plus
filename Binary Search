@@ -116,3 +116,52 @@
                     }
                 return 0;
             }
+
+
+//Q3: SUBSUMS - Subset Sums    The following 5 subsets have a sum between -1 and 2:
+                  0 = 0 (the empty subset)
+                  1 = 1
+                  1 + (-2) = -1
+                  -2 + 3 = 1
+                  1 + (-2) + 3 = 2
+   //Approches:
+     //App:
+       //Solutions: 
+            #include<bits/stdc++.h>
+            using namespace std;
+            void solve(vector<int> arr, int i,int n,vector<int>&ans,int sum){
+                  if(i==n){
+                      ans.push_back(sum);
+                      return;
+                  }
+                  solve(arr,i+1,n,ans,sum+arr[i]);
+                  solve(arr,i+1,n,ans,sum);
+              }
+                vector<int> subsetSums(vector<int> arr, int N)
+                {
+                    // Write Your Code here
+                    vector<int> ans;
+                    solve(arr,0,N,ans,0);
+                    sort(ans.begin(),ans.end());
+                    return ans;
+                }
+            int main(){
+                int n,a,b;
+                cin>>n>>a>>b;
+                vector<int> arr;
+                for(int i=0;i<n;i++){
+                   int ch;
+                   cin>>ch;
+                   arr.push_back(ch);
+                }
+                vector<int> ans1=subsetSums(arr,n);
+                int c=0;
+                for(int i=0;i<ans1.size();i++){
+                    if(ans1[i]>=a and ans1[i]<=b){
+                        c++;
+                    }
+                }
+                cout<<"The count is : "<<c;
+                return 0;
+            }
+          
