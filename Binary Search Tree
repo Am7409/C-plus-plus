@@ -1,0 +1,4 @@
+The Binary Search tree is the type of tree in which the left subtree is smaller than the root value and the right subtree is greater than the root value;
+It is created using by the singley linked list;
+Now the code to implement it on the compiler
+
