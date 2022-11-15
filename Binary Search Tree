@@ -124,3 +124,19 @@ Q3: k-th smallest element in BST
         int c=0;
         return solve(root,K,c);
     }
+
+
+Q 4: 
+   //Approches
+     //App1 for this we have tom find out the 
+       //Solutions
+           Node* LCA(Node *root, int n1, int n2)
+            {
+               //Your code here
+                if(root->data>n1&root->data>n2)return LCA(root->left,n1,n2);
+
+               if(root->data<n1&root->data<n2)return LCA(root->right,n1,n2);
+
+               return root;
+
+            }
