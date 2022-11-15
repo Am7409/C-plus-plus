@@ -98,3 +98,29 @@ Now the code to implement it on the compiler
         }
 
         }
+
+
+Q3: k-th smallest element in BST 
+   //Approches
+      //App1 : for this we use the inorder property to solve this question
+               to this we have to in place of the printing the value we have to use the check whether and than increase the counter so that we have to 
+               check it is equal to the given counter;
+      //Solutions
+         int solve(Node* root, int k, int &count){
+        if(root==NULL){
+            return -1;
+        }
+        int left= solve(root->left,k,count);
+        if(left!=-1)
+           return left;
+           count++;
+        if(count==k)
+           return root->data;
+        
+        return solve(root->right,k,count);
+    }
+    int KthSmallestElement(Node *root, int K) {
+        // add code here.
+        int c=0;
+        return solve(root,K,c);
+    }
