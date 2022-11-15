@@ -51,3 +51,50 @@ Now the code to implement it on the compiler
 
                   return 0;
               }
+
+
+ Q2 : Predecessor and Successor
+    //Approches
+      //App1 : For this we have to find the pre value of the given key in the preorder tree
+               So to find this for finding the predecessor we have first go to the left from the key and than go to the extreem right 
+               And find the successor we have to firstly go to the right and go to the extreem left so that to find out the successor 
+               and if the given key is greater than we have to update the successor and than to solve the case of the leaf node;
+               
+      //Solutions
+         Node* inpre(Node* root){
+            Node* temp=root->left;
+            while(temp->right!=NULL){
+                temp=temp->right;
+            }
+            return temp;
+        }
+        Node* insuc(Node* root){
+            Node* temp=root->right;
+            while(temp->left!=NULL){
+                temp=temp->left;
+            }
+            return temp;
+        }
+        void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+        {
+
+        // Your code goes here
+
+        if(root==NULL){
+            return;
+        }
+        if(root->key == key){
+            if(root->left) pre=inpre(root);
+            if(root->right) suc=insuc(root);
+            return;
+        }
+        if(key > root->key){
+            pre=root;
+            findPreSuc(root->right,pre,suc,key);
+        }
+        else if(key < root->key){
+            suc=root;
+            findPreSuc(root->left,pre,suc,key);
+        }
+
+        }
