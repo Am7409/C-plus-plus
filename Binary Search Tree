@@ -126,9 +126,9 @@ Q3: k-th smallest element in BST
     }
 
 
-Q 4: 
+Q 4: Lowest Common Ancestor in a BST
    //Approches
-     //App1 for this we have tom find out the 
+     //App1 for this we have tom find out the LCA by just finding the comman point of the nodes
        //Solutions
            Node* LCA(Node *root, int n1, int n2)
             {
