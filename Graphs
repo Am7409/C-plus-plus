@@ -45,3 +45,35 @@ Q1 Implemantion of graph in the adjecny list form
             g.printAdjecylist();
             return 0;
           }
+
+
+Q2: BFS of graph
+   //Aproches
+     //App1: For this we have to take the queue to store the nodes and its neighbour and a visited map for the replacing the chance of infinte loop between any
+              printed node in the ans array;
+              Firstly we have to store the first node and than store all it's neighbour in the queue and pop the front element from the queue and store it into the 
+              ans vector;
+              and also check any neighbour is also there which is in front of the queue;
+              
+              //Solutins
+              
+                vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+                        // Code here
+                        unordered_map<int,bool> vis;
+                        vector<int> ans;
+                        queue<int> q;
+                        q.push(0);
+                        vis[0]=true;
+                        while(q.size()>0){
+                            int cur=q.front();
+                            q.pop();
+                            ans.push_back(cur);
+                            for(auto i:adj[cur]){
+                                if(vis[i]==false){
+                                q.push(i);
+                                    vis[i]=true;
+                                }
+                            }
+                        }
+                        return ans;
+                    }
