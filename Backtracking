@@ -1,0 +1,64 @@
+This is type of aproach which works with help of recursion which means that a solve can be solve many ways.
+
+Q1: Remove Invalid Parentheses
+
+    Input: s = "()())()"
+    Output: ["(())()","()()()"]
+      
+      //Approches 
+         //App1 : we have to just do this problem in 2-3 steps;
+               1: we have forst check the balanced parnthese of the stirng 
+               2: than number of brackets whose has no pair in the string 
+               3: now we have to check this for every bracket in the stirng using recursion and backrtracking 
+        //Solution
+          unordered_map<string,int> m;
+           int checkextraparnthese(string s)
+              {
+                  stack<char> stck;
+                  int i = 0;
+                  while(i < s.size())
+                  {
+                      if(s[i] == '(')
+                          stck.push('(');
+                      else if(s[i] == ')')
+                      {
+                          if(stck.size() > 0 && stck.top() == '(')
+                              stck.pop();
+                          else
+                              stck.push(')');
+                      }
+                      i++;
+                  }
+                  return stck.size();
+              }
+
+              void solve(string s,int minval, vector<string> &ans ){
+                  //checking wether the ans are repeated or not
+                  if(m[s]!=0){
+                      return;
+                  } 
+                  else{
+                      m[s]++;
+                  }
+                  //base case
+                  if(minval<0){
+                      return;
+                  }
+                  if(minval==0){
+                      if(!checkextraparnthese(s)){   //this esures that the string is valid or not 
+                          ans.push_back(s);
+                          return;
+                      }
+                  }
+                  for(int i=0;i<s.size();i++){
+                      string left=s.substr(0,i);
+                      string right=s.substr(i+1);
+                      solve(left+right,minval-1,ans);
+                  }
+              }
+
+              vector<string> removeInvalidParentheses(string s) {
+                  vector<string> ans;
+                  solve(s,checkextraparnthese(s),ans);
+                  return ans;
+              }
