@@ -107,3 +107,81 @@ Q3: DFS of Graph
                                 }
                                 return ans;
                             }
+
+
+Q4: Detect cycle in an undirected graph
+    //Approcehs 
+       //App1 this is by the bfs approach
+              in this we same doing as we are do in the bfs but in this one more condition is also added that is if the visited is true for a node and it's parent is
+                equal to it's current node in the queue than the cycle is present in the graph
+             //Solution 
+                  bool iscyclic(int i,unordered_map<int,bool> &vis,vector<int>adj[] ){
+                            queue<int> q;
+                            unordered_map<int,int> part;
+                            vis[i]=true;
+                            part[i]=-1;
+                            q.push(i);
+                            while(q.empty()){
+                                int cur=q.front();
+                                q.pop();
+                                for(auto it:adj[cur]){
+                                if(vis[it]==true and part[cur]!=it){
+                                    return true;
+                                }
+                                else if(!vis[it]){
+                                    q.push(it);
+                                    vis[it]=true;
+                                    part[it]=cur;
+                                }
+                            }
+                            }
+                            return false;
+                        }
+                            bool isCycle(int V, vector<int> adj[]) {
+                                // Code here
+                                //Dection of cycle using the BFS way 
+                                unordered_map<int,bool> vis;
+                                unordered_map<int,list<int>> mp;
+                               //to handle the dosconneced componants
+                               for(int i=0;i<V;i++){
+                                   if(vis[i]==0){
+                                       if(iscyclic(i,vis,adj)){
+                                           return true;
+                                       }
+                                   }
+
+                               }
+                                return false;
+                            }
+             
+             
+             //Approch 2 this is doing by the DFS approach 
+               This is also same as that of DFS and just one add up is if the visited is true for a node and it's parent is
+                equal to it's current node in the queue than the cycle is present in the graph
+                    //Solution 
+                      bool detectdfs(vector<int> adj[],int vis[] ,int i,int part){
+                                vis[i]=1;
+                                for(auto it:adj[i]){
+                                    if(!vis[it]){
+                                        if(detectdfs(adj,vis,it,i)){
+                                            return true;
+                                        }
+                                    }
+                                    else if(it!=part) {
+                                        // this means that cycle is present 
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            }
+
+                          public:
+                            bool isCycle(int V, vector<int> adj[]) {
+                                int vis[V] = {0};
+                                for(int i = 0 ; i < V ; i++) {
+                                    if(vis[i] == 0) {
+                                        if(detectdfs(adj , vis , i,-1)) return true;
+                                    }
+                                }
+                                return false;
+                            }
