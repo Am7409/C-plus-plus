@@ -77,3 +77,33 @@ Q2: BFS of graph
                         }
                         return ans;
                     }
+
+
+Q3: DFS of Graph
+   //approches
+      //App1 for this we have to solve by recursion 
+             firstly we create a loop and in that we have to check each node on the graph 
+             and than check into the more depth and in the function if the node's neighbur is not visited than mark it visited and check the same condition for its
+               neighbour 
+               
+          //Sloutions 
+             void solve(unordered_map<int,bool> &vis,vector<int> &ans,vector<int> adj[],int i){
+                                 ans.push_back(i);
+                                 vis[i]=true;
+                                 for(auto it:adj[i]){
+                                     if(!vis[it]){
+                                         solve(vis,ans,adj,it);
+                                     }
+                                 }
+                                 }
+                            vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+                                // Code here
+                                unordered_map<int,bool> vis;
+                                vector<int> ans;
+                                for(int i=0;i<V;i++){
+                                    if(vis[i]==false){ 
+                                        solve(vis,ans,adj,i);
+                                    }
+                                }
+                                return ans;
+                            }
