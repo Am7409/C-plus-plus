@@ -112,7 +112,7 @@ Q3: DFS of Graph
 Q4: Detect cycle in an undirected graph
     //Approcehs 
        //App1 this is by the bfs approach
-              in this we same doing as we are do in the bfs but in this one more condition is also added that is if the visited is true for a node and it's parent is
+              in this we same doing as we are do in the bfs but in this one more condition is also added that is if the visited is true for a node and it's parent is not
                 equal to it's current node in the queue than the cycle is present in the graph
              //Solution 
                   bool iscyclic(int i,unordered_map<int,bool> &vis,vector<int>adj[] ){
@@ -156,8 +156,8 @@ Q4: Detect cycle in an undirected graph
              
              
              //Approch 2 this is doing by the DFS approach 
-               This is also same as that of DFS and just one add up is if the visited is true for a node and it's parent is
-                equal to it's current node in the queue than the cycle is present in the graph
+               This is also same as that of DFS and just one add up is if the visited is true for a node and it's parent is not
+                equal to it's current node than the cycle is present in the graph
                     //Solution 
                       bool detectdfs(vector<int> adj[],int vis[] ,int i,int part){
                                 vis[i]=1;
@@ -181,6 +181,45 @@ Q4: Detect cycle in an undirected graph
                                 for(int i = 0 ; i < V ; i++) {
                                     if(vis[i] == 0) {
                                         if(detectdfs(adj , vis , i,-1)) return true;
+                                    }
+                                }
+                                return false;
+                            }
+
+
+Q5: Detect cycle in a directed graph
+    //Approches 
+       //Approch 1 this is doing by the DFS approach 
+               This is also same as that of DFS and just one add up is if the visited is true for a node and it's parent is
+                equal to it's current node than the cycle is present in the graph
+                    //Solution 
+                      bool checkcycle(int i, unordered_map<int,bool> &vis,unordered_map<int,bool> &dfscheck,vector<int> adj[]){
+                                vis[i]=true;
+                                dfscheck[i]=true;
+                                for(auto it:adj[i]){
+                                    if(!vis[it]){
+                                        if(checkcycle(it,vis,dfscheck,adj)){
+                                            return true;
+                                        }
+                                    }
+                                    else if(dfscheck[it]) {
+                                       return true;    
+                                    }
+                                }
+                                dfscheck[i]=false;
+                                return false;
+                            }
+                            bool isCyclic(int V, vector<int> adj[]) {
+                                // code here
+                                //call dfs through for all componants
+                                unordered_map<int,bool> vis;
+                                unordered_map<int,bool> dfsvis;
+
+                                for(int i=0;i<V;i++){
+                                    if(!vis[i]){
+                                        if(checkcycle(i,vis,dfsvis,adj)){
+                                            return true;
+                                        }
                                     }
                                 }
                                 return false;
