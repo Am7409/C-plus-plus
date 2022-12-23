@@ -224,3 +224,91 @@ Q5: Detect cycle in a directed graph
                                 }
                                 return false;
                             }
+           //App2 we can also use the topolgical sort if the topological sort is return the sorted graph that means that the cycle is prsent in the graph
+
+
+Q6: Topological sort  :- this sorting technique is onliy applied in the directed graph and also in the graph there is no cycle is present;
+  //Approches 
+    //App1: By using the DFS
+             In this we have to call the all the neighbour of the particular node and mark all of them visited 
+             And if there is condition where we dont move further than we have to store that node into the stack and that's how your soritng is complete
+             
+         //Solutions
+             void topological(unordered_map<int,bool> &vis,int i,vector<int> adj[],stack<int> &s){
+                            vis[i]=true;
+                            for(auto it:adj[i]){
+                                if(!vis[it]){
+                                    vis[it]=true;
+                                    topological(vis,it,adj,s);
+                                }
+                            }
+                            s.push(i);
+                        }
+                        vector<int> topoSort(int V, vector<int> adj[]) 
+                        {
+                            // code here
+                            //Main calling topological function for all componanas in the graph 
+                            unordered_map<int,bool> vis;
+                            stack<int> s;
+                            for(int i=0;i<V;i++){
+                                if(!vis[i]){
+                                    topological(vis,i,adj,s);
+                                }
+                            }
+                            vector<int> ans;
+                            while(!s.empty()){
+                                ans.push_back(s.top());
+                                s.pop();
+                            }
+                            return ans;
+                        }
+                        
+                        
+        //App2 Using the BFS or Kahn's Algorithim
+              In this have to use the conscept of indegree not the visited one in which we have to push the node into the answere vector whose indegree is 0 
+              and firstly we have to push the node into the queue and than the answer vector
+              
+              //Solution
+                  	vector<int> topoSort(int V, vector<int> adj[]) 
+                                {   //This is using the kahn's alogrithim
+                                    // code here
+                                    //find the all the node's indegree 
+                                    vector<int> indegree(V,0);
+                                    for(int i=0;i<V;i++){
+                                        for(auto j:adj[i]){
+                                            indegree[j]++;
+                                        }
+                                    }
+                                    //0 degree walo loi push karo
+                                    queue<int> q;
+                                    for(int i=0;i<V;i++){
+                                        if(indegree[i] ==0){
+                                            q.push(i);
+                                        }
+                                    }
+
+                                    //Now appling the bfs algorithim 
+                                    vector<int> ans;
+                                    while( !q.empty()){
+                                        auto cur = q.front();
+                                        q.pop();
+
+                                    //store the ans
+                                    ans.push_back(cur);
+
+                                    for(auto &it:adj[cur]){
+                                        indegree[it]--;
+                                        if(indegree[it]==0){
+                                            q.push(it);
+                                        }
+                                    }
+                                }
+                                    return ans;
+                                }
+               
+       
+       
+       
+       
+       
+       
