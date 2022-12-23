@@ -224,8 +224,12 @@ Q5: Detect cycle in a directed graph
                                 }
                                 return false;
                             }
-           //App2 we can also use the topolgical sort if the topological sort is return the sorted graph that means that the cycle is prsent in the graph
-
+            
+            //App2 this is doing by the BFS approach 
+                  we can also use the topolgical sort if the topological sort is return the sorted graph that means that the cycle is prsent in the graph 
+                  So we use the kahn's algo to find this 
+            //Solution 
+                 
 
 Q6: Topological sort  :- this sorting technique is onliy applied in the directed graph and also in the graph there is no cycle is present;
   //Approches 
