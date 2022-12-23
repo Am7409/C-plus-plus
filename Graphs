@@ -312,7 +312,28 @@ Q6: Topological sort  :- this sorting technique is onliy applied in the directed
                
        
        
-       
+Q7: Shortest path in an unweighted graph
+     //Approches
+         //App1 In this we use the BFS algorithim to find the shortest path 
+                For this we have to take the partent map and in that we have to mark the parent of every node and the cach is that the desitnation parent is marked which
+                shortest distance among all
+                  //Solution 
+                      #include <unordered_map> 
+                        #include <queue>
+                        #include <list>
+                        vector<int> shortestPath( vector<pair<int,int>> edges , int n , int m, int s , int t){
+
+                                unordered_map <int , list<int>  > adj ;    for ( int i = 0 ; i < edges.size() ; i++ ) {       int u = edges[i].first ;       int v = edges[i].second ;              adj[u].push_back(v) ;       adj[v].push_back(u) ;   }  
+
+                            //Appling the bfs algo 
+                            unordered_map<int , bool> visited ;    unordered_map <int,int> parent ;    queue<int> q ;    q.push(s) ;   parent[s] = -1 ;    visited[s] = true ;       while ( !q.empty() ) {       int front = q.front() ;       q.pop() ;              for ( auto i : adj[front] ) {           if ( !visited[i] ) {           visited[i] = true ;            parent[i] = front ;            q.push(i) ;  }   }  }
+
+                            //prepare the shortest node
+                             vector <int> ans ;          int currentNode = t ;          ans.push_back(t) ;
+
+                            while ( currentNode != s )     {         currentNode = parent[currentNode] ;         ans.push_back(currentNode) ;              }          reverse (ans.begin() , ans.end()) ;         return ans ;  }
+
+
        
        
        
