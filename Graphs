@@ -508,7 +508,7 @@ Q9: Implementing Dijkstra Algorithm
 
 Q10: Minimum Spanning Tree
     //Approches
-        //App1 This is by using the three vectors i.e. key, parents, mst; 
+        //App1 This is by Prim's Algorithim and by using the three vectors i.e. key, parents, mst; 
           //Solutons
              int spanningTree(int V, vector<vector<int>> adj[])
                     {
