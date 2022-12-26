@@ -545,3 +545,14 @@ Q10: Minimum Spanning Tree
                         }
                         return ans;
                     }
+           //App2 
+               for(int j=0;j<V;j++){
+                                if(mst[j]==false and key[j]<mini){
+                                    u=j;
+                                    mini=key[j];
+                                }
+                                
+                        This part is can be replace by propiity queue which also decerase the overall time complixety from O(n^2) to O(n*logn). 
+                        
+                        
+                    
