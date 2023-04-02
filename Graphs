@@ -271,6 +271,10 @@ Q6: Topological sort  :- this sorting technique is onliy applied in the directed
         //App2 Using the BFS or Kahn's Algorithim
               In this have to use the conscept of indegree not the visited one in which we have to push the node into the answere vector whose indegree is 0 
               and firstly we have to push the node into the queue and than the answer vector
+              steps to follow:
+              step1: find the indegree of the all the nodes
+              step2: push the element into the queue which has the indegree zero 
+              step3: find the node in the front of the stack and than find its neghibour make there indgree -1 and push them into the stack 
               
               //Solution
                   	vector<int> topoSort(int V, vector<int> adj[]) 
